@@ -2,6 +2,10 @@ var mysql = require('mysql');
 
 var inquirer = require('inquirer');
 
+var infoMan = require("./info.js")
+
+var infoWordMan = infoMan.wordThing
+
 var idChoice 
 
 var addChoice
@@ -16,7 +20,7 @@ var connection = mysql.createConnection(
 		//username
 		user: "root",
 		//yourpassword
-		password: "Samandi19",
+		password: infoWordMan,
 		database: "bamazon"
 	}
 )
@@ -112,13 +116,7 @@ function viewLowProducts() {
 
  function promptIDAdd() {
 
- 	// connection.query("SELECT * FROM products",
-		// function(err, res){
-		// 	if (err) throw err;
-		// 	console.log(res)
-			
-		
-		// });
+ 	
 
  	inquirer.prompt({
 	  name: "choice",

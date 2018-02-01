@@ -2,6 +2,10 @@ var mysql = require('mysql');
 
 var inquirer = require('inquirer');
 
+var infoCus = require("./info.js")
+
+var infoWordCus = infoCus.wordThing
+
 var customerChoiceID
 
 var customerChoiceQuantity
@@ -13,27 +17,12 @@ var connection = mysql.createConnection(
 		//username
 		user: "root",
 		//yourpassword
-		password: "Samandi19",
+		password: infoWordCus,
 		database: "bamazon"
 	}
 )
 
-// connection.connect(function(err) {
-// 	if (err) throw err;
-// 	console.log("connected as id" + connection.threadId)
-	
-// 	readProducts()
-// 	askCustomer()
-// 	//askID()
 
-// })
-
-// function bamazonInit() {
-
-// 	//askUser()
-// 	readProducts()
-	
-// }
 
 function bamazonInit() {
 	connection.query("SELECT * FROM products",
@@ -99,9 +88,7 @@ function askUser() {
     var productQuery = 'SELECT * FROM products WHERE ?';
 
 		connection.query(productQuery, {item_id: customerChoiceID}, function(err, data) {
-			//if (err) throw err;
-
-			//console.log(customerChoiceQuantity)
+			
 
 			var productStock = data[0].stock_quantity
 
@@ -126,57 +113,7 @@ function askUser() {
 }
 
 bamazonInit()
-//askUser()
 
-   // connection.connect(function(err) {
-  	//if (err) throw err;
- 	 //var sql = "UPDATE products SET stock_quantity = " + answers.quantity + " WHERE item_id = " + answers.id;
-  // 	connection.query(sql, function (err, result) {
-  //   //if (err) throw err;
-  //   console.log(result.affectedRows + " record(s) updated");
-  // });
-//});
-
-	//withDrawProducts()
-
-// 	var query = "UPDATE products SET ? WHERE ?";
-//       connection.query(query, [{ stock_quantity: 55 }, { item_id: 3}], function(err, res) {
-
-//       	console.log(res.affectedRows + " product shipped")
-
-	
-
-// 	// if (stock_quantity[customerChoiceID] > 0) {
-// 	// 	withDrawProducts()
-
-// 	// } else {
-// 	// 	console.log("Insufficient quantity!")
-// 	// }
-	
-    
-// });
-
-
-
-// function askQuantity(){
-
-// 	inquirer.prompt([
-// 	{
-	
-// 	}
-// 	])
-
-// .then(answers => {
-
-// 	if (--- > 0) {
-
-// 	} else {
-// 		console.log("Insufficient quantity!")
-// 	}
-    
-// });
-
-// }
 
 
 
